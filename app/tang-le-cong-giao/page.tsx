@@ -1,8 +1,22 @@
 import Link from 'next/link'
-import { CheckCircleOutlined, PhoneOutlined, ArrowRightOutlined } from '@ant-design/icons'
-import { services, Service } from '@/app/data/services'
-export default function TangLeCongGiao() {
-  const congGiaoServices: Service[] = services.filter(s => s.category === 'cong-giao')
+import { PhoneOutlined, ArrowRightOutlined } from '@ant-design/icons'
+
+interface Service {
+  id: string
+  title: string
+  price: string
+  category: string
+  slug: string
+}
+
+async function getServices() {
+  const res = await fetch('https://69f83138dd0c226688ee3977.mockapi.io/services', { cache: 'no-store' })
+  const data = await res.json()
+  return data.filter((s: Service) => s.category === 'cong-giao')
+}
+
+export default async function TangLeCongGiao() {
+  const congGiaoServices: Service[] = await getServices()
 
   return (
     <div>
@@ -27,24 +41,15 @@ export default function TangLeCongGiao() {
             Lựa chọn gói phù hợp với nhu cầu của gia đình
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {congGiaoServices.map((service) => (
+            {congGiaoServices.map((service: Service) => (
               <div key={service.id}
                 className="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition border border-zinc-100 flex flex-col">
                 <h3 className="text-xl font-bold text-zinc-900 mb-2">{service.title}</h3>
                 <p className="text-yellow-500 font-bold text-lg mb-4">
                   {service.price !== 'Liên hệ' ? `Từ ${service.price} VNĐ` : 'Liên hệ để biết giá'}
                 </p>
-                <p className="text-zinc-500 text-sm leading-relaxed mb-4">{service.desc}</p>
-                <ul className="space-y-2 mb-6 flex-1">
-                  {service.features.map((f, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-zinc-600">
-                      <CheckCircleOutlined className="text-yellow-400" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
                 <Link href={`/tang-le-cong-giao/${service.slug}`}
-                  className="bg-yellow-400 text-black font-bold px-6 py-3 rounded-full text-center hover:bg-yellow-300 transition flex items-center justify-center gap-2">
+                  className="mt-auto bg-yellow-400 text-black font-bold px-6 py-3 rounded-full text-center hover:bg-yellow-300 transition flex items-center justify-center gap-2">
                   Xem Chi Tiết <ArrowRightOutlined />
                 </Link>
               </div>
