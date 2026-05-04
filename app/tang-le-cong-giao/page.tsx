@@ -1,23 +1,8 @@
 import Link from 'next/link'
 import { CheckCircleOutlined, PhoneOutlined, ArrowRightOutlined } from '@ant-design/icons'
-
-interface Service {
-  id: string
-  title: string
-  price: string
-  desc: string
-  category: string
-  slug: string
-}
-
-async function getServices() {
-  const res = await fetch('https://69f83138dd0c226688ee3977.mockapi.io/services', { cache: 'no-store' })
-  const data = await res.json()
-  return data.filter((s: Service) => s.category === 'phat-giao')
-}
-
-export default async function TangLePhatGiao() {
-  const phatGiaoServices: Service[] = await getServices()
+import { services, Service } from '@/app/data/services'
+export default function TangLeCongGiao() {
+  const congGiaoServices: Service[] = services.filter(s => s.category === 'cong-giao')
 
   return (
     <div>
@@ -25,10 +10,10 @@ export default async function TangLePhatGiao() {
       <section className="bg-zinc-900 text-white py-20 px-4 text-center">
         <p className="text-yellow-400 uppercase tracking-widest text-sm mb-3 font-semibold">Dịch Vụ</p>
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-          Tang Lễ <span className="text-yellow-400">Phật Giáo</span>
+          Tang Lễ <span className="text-yellow-400">Công Giáo</span>
         </h1>
         <p className="text-zinc-400 max-w-2xl mx-auto">
-          Tổ chức tang lễ trang nghiêm theo nghi thức Phật giáo, đầy đủ và chuyên nghiệp
+          Tổ chức tang lễ trang trọng theo nghi thức Công giáo, đầy đủ và chuyên nghiệp
         </p>
       </section>
 
@@ -41,16 +26,25 @@ export default async function TangLePhatGiao() {
           <p className="text-center text-zinc-500 mb-12">
             Lựa chọn gói phù hợp với nhu cầu của gia đình
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {phatGiaoServices.map((service: Service) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {congGiaoServices.map((service) => (
               <div key={service.id}
                 className="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition border border-zinc-100 flex flex-col">
                 <h3 className="text-xl font-bold text-zinc-900 mb-2">{service.title}</h3>
                 <p className="text-yellow-500 font-bold text-lg mb-4">
                   {service.price !== 'Liên hệ' ? `Từ ${service.price} VNĐ` : 'Liên hệ để biết giá'}
                 </p>
-                <Link href={`/tang-le-phat-giao/${service.slug}`}
-                  className="mt-auto bg-yellow-400 text-black font-bold px-6 py-3 rounded-full text-center hover:bg-yellow-300 transition flex items-center justify-center gap-2">
+                <p className="text-zinc-500 text-sm leading-relaxed mb-4">{service.desc}</p>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {service.features.map((f, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-zinc-600">
+                      <CheckCircleOutlined className="text-yellow-400" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <Link href={`/tang-le-cong-giao/${service.slug}`}
+                  className="bg-yellow-400 text-black font-bold px-6 py-3 rounded-full text-center hover:bg-yellow-300 transition flex items-center justify-center gap-2">
                   Xem Chi Tiết <ArrowRightOutlined />
                 </Link>
               </div>
