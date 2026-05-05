@@ -1,65 +1,70 @@
 import Link from 'next/link'
-import { CheckCircleOutlined, PhoneOutlined, ArrowRightOutlined } from '@ant-design/icons'
+import { PhoneOutlined, ArrowRightOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { services } from '../data/services'
 
-interface Service {
-  id: string
-  title: string
-  price: string
-  desc: string
-  category: string
-  slug: string
-}
+const extras = [
+  { slug: 'tang-le-tiet-kiem', features: ['Xe tang chuyên dụng', 'Hòm gỗ tiêu chuẩn', 'Hoa tươi trang trí', 'Đội nhạc lễ'] },
+  { slug: 'tang-le-tron-goi', features: ['Xe tang cao cấp', 'Hòm gỗ cao cấp', 'Hoa tươi phong phú', 'Nhân viên 24/7'] },
+  { slug: 'tang-le-thiet-ke-rieng', features: ['Tư vấn riêng 1-1', 'Thiết kế theo yêu cầu', 'Không giới hạn dịch vụ', 'Hỗ trợ 24/7'] },
+]
 
-async function getServices() {
-  const res = await fetch('https://69f83138dd0c226688ee3977.mockapi.io/services', { cache: 'no-store' })
-  const data = await res.json()
-  return data.filter((s: Service) => s.category === 'phat-giao')
-}
-
-export default async function TangLePhatGiao() {
-  const phatGiaoServices: Service[] = await getServices()
+export default function TangLePhatGiao() {
+  const phatGiaoServices = services.filter(s => s.category === 'phat-giao')
 
   return (
     <div>
-      {/* Banner */}
-      <section className="bg-zinc-900 text-white py-20 px-4 text-center">
+      <section className="bg-zinc-900 text-white py-24 px-4 text-center">
         <p className="text-yellow-400 uppercase tracking-widest text-sm mb-3 font-semibold">Dịch Vụ</p>
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
           Tang Lễ <span className="text-yellow-400">Phật Giáo</span>
         </h1>
-        <p className="text-zinc-400 max-w-2xl mx-auto">
+        <p className="text-zinc-300 max-w-2xl mx-auto">
           Tổ chức tang lễ trang nghiêm theo nghi thức Phật giáo, đầy đủ và chuyên nghiệp
         </p>
       </section>
 
-      {/* Danh sách gói */}
       <section className="py-16 px-4 bg-zinc-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-center text-zinc-900 mb-2">
-            Các Gói Dịch Vụ
-          </h2>
-          <p className="text-center text-zinc-500 mb-12">
-            Lựa chọn gói phù hợp với nhu cầu của gia đình
-          </p>
+          <h2 className="text-3xl font-extrabold text-center text-zinc-900 mb-2">Các Gói Dịch Vụ</h2>
+          <p className="text-center text-zinc-500 mb-12">Lựa chọn gói phù hợp với nhu cầu của gia đình</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {phatGiaoServices.map((service: Service) => (
-              <div key={service.id}
-                className="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition border border-zinc-100 flex flex-col">
-                <h3 className="text-xl font-bold text-zinc-900 mb-2">{service.title}</h3>
-                <p className="text-yellow-500 font-bold text-lg mb-4">
-                  {service.price !== 'Liên hệ' ? `Từ ${service.price} VNĐ` : 'Liên hệ để biết giá'}
-                </p>
-                <Link href={`/tang-le-phat-giao/${service.slug}`}
-                  className="mt-auto bg-yellow-400 text-black font-bold px-6 py-3 rounded-full text-center hover:bg-yellow-300 transition flex items-center justify-center gap-2">
-                  Xem Chi Tiết <ArrowRightOutlined />
-                </Link>
-              </div>
-            ))}
+            {phatGiaoServices.map((service) => {
+              const extra = extras.find(g => g.slug === service.slug)
+              return (
+                <div key={service.id}
+                  className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition border border-zinc-100 flex flex-col">
+                  <div className="bg-yellow-50 rounded-xl p-4 mb-4 text-center">
+                    <span className="text-yellow-400 text-4xl">🙏</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-zinc-900 mb-2">{service.title}</h3>
+                  <p className="text-yellow-500 font-bold text-lg mb-4">
+                    {service.price !== 'Liên hệ' ? `Từ ${service.price} VNĐ` : 'Liên hệ để biết giá'}
+                  </p>
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {extra?.features.map((f, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm text-zinc-600">
+                        <CheckCircleOutlined className="text-yellow-400" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex gap-3 mt-auto">
+                    <a href="tel:0868576777"
+                      className="flex-1 border-2 border-yellow-400 text-yellow-500 font-bold py-2 rounded-full text-center text-sm hover:bg-yellow-400 hover:text-black transition flex items-center justify-center gap-1">
+                      <PhoneOutlined /> Gọi ngay
+                    </a>
+                    <Link href={`/tang-le-phat-giao/${service.slug}`}
+                      className="flex-1 bg-yellow-400 text-black font-bold py-2 rounded-full text-center text-sm hover:bg-yellow-300 transition flex items-center justify-center gap-1">
+                      Chi tiết <ArrowRightOutlined />
+                    </Link>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="bg-zinc-900 text-white py-16 px-4 text-center">
         <h2 className="text-3xl font-extrabold mb-4">
           Cần Tư Vấn? <span className="text-yellow-400">Gọi Ngay!</span>

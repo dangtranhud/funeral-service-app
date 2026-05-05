@@ -1,5 +1,14 @@
 import Link from 'next/link'
-import { HeartOutlined, StarOutlined, HomeOutlined, PhoneOutlined, TeamOutlined, ClockCircleOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import Image from 'next/image'
+import { 
+  HeartOutlined, 
+  StarOutlined, 
+  HomeOutlined, 
+  PhoneOutlined, 
+  TeamOutlined, 
+  ClockCircleOutlined, 
+  CheckCircleOutlined 
+} from '@ant-design/icons'
 
 const services = [
   {
@@ -31,85 +40,94 @@ const stats = [
 
 export default function Home() {
   return (
-    <div>
-      {/* Hero Banner */}
-      <section className="relative bg-zinc-900 text-white py-32 px-4">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-950 opacity-95"></div>
-        <div className="relative max-w-4xl mx-auto text-center">
-          <p className="text-yellow-400 uppercase tracking-widest text-sm mb-4 font-semibold">
-            Dịch Vụ Tang Lễ Trọn Gói
-          </p>
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-            Đồng Hành Cùng <br />
-            <span className="text-yellow-400">Gia Đình Bạn</span>
-          </h1>
-          <p className="text-zinc-300 text-lg mb-8 max-w-2xl mx-auto">
-            Chúng tôi tổ chức tang lễ trang trọng, chuyên nghiệp và tận tâm.
-            Giúp gia đình bạn vượt qua giai đoạn khó khăn nhất.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+    <div className="min-h-screen bg-white">
+      {/* Hero Banner - Đã xóa chữ để hiện ảnh đẹp */}
+      <section className="relative bg-zinc-900 text-white py-32 md:py-64 px-4 overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/banner-hero.png" 
+            alt="Dịch vụ tang lễ chuyên nghiệp"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+          {/* Lớp phủ mờ nhẹ để giữ chiều sâu cho ảnh nhưng không che mất chi tiết */}
+          <div className="absolute inset-0 bg-black/30 bg-gradient-to-t from-zinc-900/80 via-transparent to-black/20"></div>
+        </div>
+
+        {/* Content - Chỉ giữ lại nút bấm để không che ảnh */}
+        <div className="relative z-10 w-full max-w-4xl mx-auto text-center mt-auto md:mt-32">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="tel:0868576777"
-              className="bg-yellow-400 text-black font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition flex items-center justify-center gap-2">
+              className="w-full sm:w-auto bg-yellow-400 text-black font-bold px-10 py-4 rounded-full hover:bg-yellow-300 transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-2xl">
               <PhoneOutlined /> Gọi Ngay: 0868 57 67 77
             </a>
             <Link href="/gioi-thieu"
-              className="border-2 border-yellow-400 text-yellow-400 font-bold px-8 py-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
+              className="w-full sm:w-auto border-2 border-white text-white font-bold px-10 py-4 rounded-full hover:bg-white hover:text-black transition-all backdrop-blur-md shadow-2xl">
               Tìm Hiểu Thêm
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="bg-yellow-400 py-10">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      {/* Stats Section */}
+      <section className="bg-yellow-400 py-12 relative z-20 shadow-2xl">
+        <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, i) => (
-            <div key={i} className="flex flex-col items-center gap-2">
+            <div key={i} className="flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
               {stat.icon}
-              <p className="text-3xl font-extrabold text-zinc-900">{stat.number}</p>
-              <p className="text-zinc-700 text-sm">{stat.label}</p>
+              <p className="text-3xl md:text-4xl font-black text-zinc-900">{stat.number}</p>
+              <p className="text-zinc-800 font-semibold text-sm uppercase tracking-tighter">{stat.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Dịch vụ */}
-      <section className="py-20 px-4 bg-zinc-50">
+      {/* Services Section */}
+      <section className="py-24 px-4 bg-zinc-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-center text-zinc-900 mb-2">
-            Dịch Vụ Của Chúng Tôi
-          </h2>
-          <p className="text-center text-zinc-500 mb-12">
-            Cung cấp đầy đủ các dịch vụ tang lễ chuyên nghiệp
-          </p>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4">
+              Dịch Vụ Của Chúng Tôi
+            </h2>
+            <div className="h-1 w-20 bg-yellow-400 mx-auto mb-4"></div>
+            <p className="text-zinc-500 max-w-xl mx-auto">
+              Cung cấp đầy đủ các dịch vụ tang lễ chuyên nghiệp, đáp ứng mọi nhu cầu và tín ngưỡng của gia đình.
+            </p>
+          </div>
+          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((s, i) => (
               <Link href={s.href} key={i}
-                className="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition group border border-zinc-100">
-                <div className="mb-4">{s.icon}</div>
-                <h3 className="text-xl font-bold text-zinc-900 mb-2 group-hover:text-yellow-500 transition">
+                className="bg-white rounded-3xl shadow-sm p-10 hover:shadow-2xl transition-all duration-300 group border border-zinc-100 flex flex-col items-center text-center">
+                <div className="mb-6 p-4 bg-zinc-50 rounded-2xl group-hover:bg-yellow-50 transition-colors">
+                  {s.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-zinc-900 mb-4 group-hover:text-yellow-600 transition">
                   {s.title}
                 </h3>
-                <p className="text-zinc-500 text-sm leading-relaxed">{s.desc}</p>
-                <p className="mt-4 text-yellow-500 font-semibold text-sm">Xem chi tiết →</p>
+                <p className="text-zinc-500 text-md leading-relaxed mb-6">{s.desc}</p>
+                <p className="mt-auto text-yellow-600 font-bold text-sm">XEM CHI TIẾT →</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-zinc-900 text-white py-16 px-4 text-center">
-        <h2 className="text-3xl font-extrabold mb-4">
-          Cần Hỗ Trợ <span className="text-yellow-400">Ngay Bây Giờ?</span>
-        </h2>
-        <p className="text-zinc-400 mb-8">
-          Đội ngũ của chúng tôi luôn sẵn sàng 24/24 để hỗ trợ gia đình bạn
-        </p>
-        <a href="tel:0868576777"
-          className="bg-yellow-400 text-black font-bold px-10 py-4 rounded-full text-lg hover:bg-yellow-300 transition inline-flex items-center gap-2">
-          <PhoneOutlined /> 0868 57 67 77
-        </a>
+      {/* Final CTA Section */}
+      <section className="bg-zinc-900 text-white py-20 px-4 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
+            Cần Hỗ Trợ <span className="text-yellow-400">Ngay Bây Giờ?</span>
+          </h2>
+          <p className="text-zinc-400 text-lg mb-10">
+            Đội ngũ của chúng tôi luôn sẵn sàng 24/24 để lắng nghe và đồng hành cùng gia đình bạn trong mọi tình huống.
+          </p>
+          <a href="tel:0868576777"
+            className="bg-yellow-400 text-black font-bold px-12 py-5 rounded-full text-xl hover:bg-yellow-300 transition-all inline-flex items-center gap-3 shadow-2xl transform hover:scale-105">
+          </a>
+          
+        </div>
       </section>
     </div>
   )
