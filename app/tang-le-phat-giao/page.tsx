@@ -13,14 +13,21 @@ export default function TangLePhatGiao() {
 
   return (
     <div>
-      <section className="bg-zinc-900 text-white py-24 px-4 text-center">
-        <p className="text-yellow-400 uppercase tracking-widest text-sm mb-3 font-semibold">Dịch Vụ</p>
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-          Tang Lễ <span className="text-yellow-400">Phật Giáo</span>
-        </h1>
-        <p className="text-zinc-300 max-w-2xl mx-auto">
-          Tổ chức tang lễ trang nghiêm theo nghi thức Phật giáo, đầy đủ và chuyên nghiệp
-        </p>
+      {/* Banner có ảnh */}
+      <section className="relative text-white text-center" style={{ height: '400px' }}>
+        <div className="absolute inset-0">
+          <img src="/tang-le-2.jpg" alt="Tang Lễ Phật Giáo" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-zinc-900 opacity-70"></div>
+        </div>
+        <div className="relative z-10 pt-24">
+          <p className="text-yellow-400 uppercase tracking-widest text-sm mb-3 font-semibold">Dịch Vụ</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+            Tang Lễ <span className="text-yellow-400">Phật Giáo</span>
+          </h1>
+          <p className="text-zinc-300 max-w-2xl mx-auto px-4">
+            Tổ chức tang lễ trang nghiêm theo nghi thức Phật giáo, đầy đủ và chuyên nghiệp
+          </p>
+        </div>
       </section>
 
       <section className="py-16 px-4 bg-zinc-50">

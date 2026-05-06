@@ -1,6 +1,7 @@
 import { CheckCircleOutlined, PhoneOutlined, ArrowLeftOutlined } from '@ant-design/icons'
 import { services } from '../../data/services'
 import Link from 'next/link'
+import ContactForm from '../../components/ContactForm'
 
 export default async function CongGiaoDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -9,14 +10,15 @@ export default async function CongGiaoDetail({ params }: { params: Promise<{ slu
   if (!service) {
     return (
       <div className="text-center py-32">
-        <h1 className="text-3xl font-bold text-zinc-900">Không tìm thấy dịch vụ!</h1>
-        <Link href="/tang-le-cong-giao" className="text-yellow-500 mt-4 inline-block">
-          Quay lại
-        </Link>
+        <h1 className="text-3xl font-bold">Không tìm thấy dịch vụ!</h1>
+        <Link href="/tang-le-cong-giao" className="text-yellow-500 mt-4 inline-block">← Quay lại</Link>
       </div>
     )
   }
 
+const images = slug === 'cong-giao-tron-goi'
+  ? ['/cg-tron-goi-1.png', '/cg-tron-goi-2.png', '/cg-tron-goi-3.png', '/cg-tron-goi-4.png']
+  : ['/cg-thiet-ke-1.png', '/cg-thiet-ke-2.png', '/cg-thiet-ke-3.png', '/cg-thiet-ke-4.png']
   return (
     <div>
       <section className="bg-zinc-900 text-white py-20 px-4 text-center">
@@ -24,42 +26,74 @@ export default async function CongGiaoDetail({ params }: { params: Promise<{ slu
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
           <span className="text-yellow-400">{service.title}</span>
         </h1>
-        <p className="text-zinc-400 max-w-2xl mx-auto">{service.desc}</p>
       </section>
 
       <section className="py-16 px-4 bg-zinc-50">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <Link href="/tang-le-cong-giao"
             className="inline-flex items-center gap-2 text-yellow-500 font-semibold mb-8 hover:text-yellow-400">
             <ArrowLeftOutlined /> Quay lại danh sách
           </Link>
 
-          <div className="bg-white rounded-2xl shadow-md p-10 border border-zinc-100">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-extrabold text-zinc-900">{service.title}</h2>
-              <span className="text-yellow-500 font-bold text-xl">
-                {service.price !== 'Liên hệ' ? `Từ ${service.price} VNĐ` : 'Liên hệ để biết giá'}
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="md:col-span-2 space-y-6">
+              <div className="bg-white rounded-2xl shadow-md p-8 border border-zinc-100">
+                <h2 className="text-2xl font-extrabold text-zinc-900 mb-4">{service.title}</h2>
+                <p className="text-zinc-600 leading-relaxed mb-6">{service.desc}</p>
+                <div className="bg-yellow-50 rounded-xl p-4 mb-6">
+                  <p className="text-yellow-600 font-bold text-lg">
+                    💰 Giá: {service.price !== 'Liên hệ' ? `Từ ${service.price} VNĐ` : 'Liên hệ để biết giá'}
+                  </p>
+                </div>
+                <h3 className="text-lg font-bold text-zinc-900 mb-4">✨ Dịch vụ bao gồm:</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {service.features.map((f, i) => (
+                    <div key={i} className="flex items-center gap-2 bg-zinc-50 rounded-lg p-3">
+                      <CheckCircleOutlined className="text-yellow-400 text-lg" />
+                      <span className="text-zinc-700 text-sm">{f}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Ảnh thực tế */}
+              <div className="bg-white rounded-2xl shadow-md p-8 border border-zinc-100">
+                <h3 className="text-lg font-bold text-zinc-900 mb-4">📸 Hình Ảnh Thực Tế</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {images.map((img, i) => (
+                    <img key={i} src={img} alt={`Ảnh ${i + 1}`}
+                      className="w-full h-48 object-cover rounded-xl hover:scale-105 transition duration-300" />
+                  ))}
+                </div>
+              </div>
+
+              {/* Cam kết */}
+              <div className="bg-zinc-900 rounded-2xl p-6 text-white">
+                <h3 className="font-bold text-yellow-400 mb-4 text-lg">🤝 Cam Kết Của Chúng Tôi</h3>
+                <ul className="space-y-2 text-zinc-300 text-sm">
+                  <li>✅ Hỗ trợ 24/7, có mặt trong vòng 30 phút</li>
+                  <li>✅ Chi phí minh bạch, không phát sinh</li>
+                  <li>✅ Đội ngũ chuyên nghiệp, tận tâm</li>
+                  <li>✅ Đảm bảo nghi thức đúng theo Công giáo</li>
+                </ul>
+              </div>
             </div>
 
-            <p className="text-zinc-600 leading-relaxed mb-8">{service.desc}</p>
-
-            <h3 className="text-lg font-bold text-zinc-900 mb-4">Dịch vụ bao gồm:</h3>
-            <ul className="space-y-3 mb-8">
-              {service.features.map((f, i) => (
-                <li key={i} className="flex items-center gap-3 text-zinc-600">
-                  <CheckCircleOutlined className="text-yellow-400 text-lg" />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="bg-zinc-50 rounded-xl p-6 text-center">
-              <p className="text-zinc-600 mb-4">Liên hệ ngay để được tư vấn miễn phí</p>
-              <a href="tel:0868576777"
-                className="bg-yellow-400 text-black font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition inline-flex items-center gap-2">
-                <PhoneOutlined /> 0868 57 67 77
-              </a>
+            {/* Form */}
+            <div className="md:col-span-1">
+              <div className="bg-white rounded-2xl shadow-md p-6 border border-zinc-100 sticky top-24">
+                <h3 className="text-lg font-bold text-zinc-900 mb-4 text-center">
+                  📞 Đăng Ký Hỗ Trợ Ngay
+                </h3>
+                <ContactForm />
+                <div className="mt-4 text-center">
+                  <p className="text-zinc-500 text-xs mb-2">Hoặc gọi trực tiếp</p>
+                  <a href="tel:0868576777"
+                    className="bg-yellow-400 text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition inline-flex items-center gap-2 w-full justify-center">
+                    <PhoneOutlined /> 0868 57 67 77
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

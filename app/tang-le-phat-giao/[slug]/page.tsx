@@ -16,6 +16,13 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
     )
   }
 
+  const images =
+    slug === 'tang-le-tiet-kiem'
+      ? ['/pl-tiet-kiem1.jpg', '/pl-tiet-kiem2.jpg', '/pl-tiet-kiem3.jpg', '/pl-tiet-kiem4.jpg']
+      : slug === 'tang-le-tron-goi'
+      ? ['/pl-tron-goi1.jpg', '/pl-tron-goi2.jpg', '/pl-tron-goi3.jpg', '/pl-tron-goi4.jpg']
+     : ['/pl-thiet-ke-rieng1.jpg', '/pl-thiet-ke-rieng2.jpg', '/pl-thiet-ke-rieng3.jpg', '/pl-thiet-ke-rieng4.jpg']
+
   return (
     <div>
       <section className="bg-zinc-900 text-white py-20 px-4 text-center">
@@ -54,15 +61,13 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                 </div>
               </div>
 
-              {/* Khung ảnh thực tế */}
+              {/* Ảnh thực tế */}
               <div className="bg-white rounded-2xl shadow-md p-8 border border-zinc-100">
                 <h3 className="text-lg font-bold text-zinc-900 mb-4">📸 Hình Ảnh Thực Tế</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i}
-                      className="bg-zinc-100 rounded-xl h-48 flex items-center justify-center text-zinc-400 text-sm border-2 border-dashed border-zinc-300">
-                      📷 Ảnh {i}
-                    </div>
+                  {images.map((img, i) => (
+                    <img key={i} src={img} alt={`Ảnh ${i + 1}`}
+                      className="w-full h-48 object-cover rounded-xl hover:scale-105 transition duration-300" />
                   ))}
                 </div>
               </div>

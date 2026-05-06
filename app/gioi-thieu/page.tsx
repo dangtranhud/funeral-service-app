@@ -1,26 +1,11 @@
+import Image from 'next/image'
 import { CheckCircleOutlined, HeartOutlined, SafetyOutlined, TeamOutlined } from '@ant-design/icons'
 
 const values = [
-  {
-    icon: <HeartOutlined className="text-4xl text-yellow-400" />,
-    title: 'Tận Tâm',
-    desc: 'Chúng tôi đặt tâm huyết vào từng tang lễ, đồng hành cùng gia đình trong những lúc khó khăn nhất.',
-  },
-  {
-    icon: <SafetyOutlined className="text-4xl text-yellow-400" />,
-    title: 'Chuyên Nghiệp',
-    desc: 'Đội ngũ nhân viên được đào tạo bài bản, giàu kinh nghiệm trong lĩnh vực tổ chức tang lễ.',
-  },
-  {
-    icon: <CheckCircleOutlined className="text-4xl text-yellow-400" />,
-    title: 'Minh Bạch',
-    desc: 'Chi phí rõ ràng, không phát sinh, gia đình hoàn toàn yên tâm về dịch vụ.',
-  },
-  {
-    icon: <TeamOutlined className="text-4xl text-yellow-400" />,
-    title: 'Đồng Hành',
-    desc: 'Luôn có mặt 24/7, hỗ trợ gia đình từ khi bắt đầu đến khi kết thúc tang lễ.',
-  },
+  { icon: <HeartOutlined className="text-4xl text-yellow-400" />, title: 'Tận Tâm', desc: 'Chúng tôi đặt tâm huyết vào từng tang lễ, đồng hành cùng gia đình trong những lúc khó khăn nhất.' },
+  { icon: <SafetyOutlined className="text-4xl text-yellow-400" />, title: 'Chuyên Nghiệp', desc: 'Đội ngũ nhân viên được đào tạo bài bản, giàu kinh nghiệm trong lĩnh vực tổ chức tang lễ.' },
+  { icon: <CheckCircleOutlined className="text-4xl text-yellow-400" />, title: 'Minh Bạch', desc: 'Chi phí rõ ràng, không phát sinh, gia đình hoàn toàn yên tâm về dịch vụ.' },
+  { icon: <TeamOutlined className="text-4xl text-yellow-400" />, title: 'Đồng Hành', desc: 'Luôn có mặt 24/7, hỗ trợ gia đình từ khi bắt đầu đến khi kết thúc tang lễ.' },
 ]
 
 export default function GioiThieu() {
@@ -39,9 +24,7 @@ export default function GioiThieu() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-extrabold text-zinc-900 mb-4">
-              Chúng Tôi Là Ai?
-            </h2>
+            <h2 className="text-3xl font-extrabold text-zinc-900 mb-4">Chúng Tôi Là Ai?</h2>
             <p className="text-zinc-600 leading-relaxed mb-4">
               Blackstones là đơn vị cung cấp dịch vụ tang lễ trọn gói hàng đầu tại TP. Hồ Chí Minh.
               Với hơn 10 năm kinh nghiệm, chúng tôi đã đồng hành cùng hơn 5000 gia đình.
@@ -55,13 +38,16 @@ export default function GioiThieu() {
               📞 Liên Hệ Ngay
             </a>
           </div>
-          <div className="bg-zinc-900 rounded-2xl p-8 text-white text-center">
-            <p className="text-6xl font-extrabold text-yellow-400 mb-2">5000+</p>
-            <p className="text-zinc-300 mb-6">Gia đình đã tin tưởng</p>
-            <p className="text-6xl font-extrabold text-yellow-400 mb-2">10+</p>
-            <p className="text-zinc-300 mb-6">Năm kinh nghiệm</p>
-            <p className="text-6xl font-extrabold text-yellow-400 mb-2">24/7</p>
-            <p className="text-zinc-300">Hỗ trợ liên tục</p>
+
+          {/* Ảnh đội ngũ */}
+          <div className="rounded-2xl overflow-hidden shadow-xl">
+            <Image
+              src="/doi-ngu.png"
+              alt="Đội ngũ Blackstones"
+              width={600}
+              height={400}
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>

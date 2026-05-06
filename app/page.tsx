@@ -1,34 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { 
-  HeartOutlined, 
-  StarOutlined, 
-  HomeOutlined, 
-  PhoneOutlined, 
-  TeamOutlined, 
-  ClockCircleOutlined, 
-  CheckCircleOutlined 
+  HeartOutlined, StarOutlined, HomeOutlined, PhoneOutlined, 
+  TeamOutlined, ClockCircleOutlined, CheckCircleOutlined 
 } from '@ant-design/icons'
 
 const services = [
-  {
-    title: 'Tang Lễ Phật Giáo',
-    desc: 'Dịch vụ tang lễ trọn gói theo nghi thức Phật giáo trang nghiêm.',
-    icon: <HeartOutlined className="text-5xl text-yellow-400" />,
-    href: '/tang-le-phat-giao',
-  },
-  {
-    title: 'Tang Lễ Công Giáo',
-    desc: 'Dịch vụ tang lễ trọn gói theo nghi thức Công giáo trang trọng.',
-    icon: <StarOutlined className="text-5xl text-yellow-400" />,
-    href: '/tang-le-cong-giao',
-  },
-  {
-    title: 'Áo Quan',
-    desc: 'Cung cấp các loại quan tài an táng, hỏa táng và hũ tro cốt.',
-    icon: <HomeOutlined className="text-5xl text-yellow-400" />,
-    href: '/ao-quan',
-  },
+  { title: 'Tang Lễ Phật Giáo', desc: 'Dịch vụ tang lễ trọn gói theo nghi thức Phật giáo trang nghiêm.', icon: <HeartOutlined className="text-5xl text-yellow-400" />, href: '/tang-le-phat-giao' },
+  { title: 'Tang Lễ Công Giáo', desc: 'Dịch vụ tang lễ trọn gói theo nghi thức Công giáo trang trọng.', icon: <StarOutlined className="text-5xl text-yellow-400" />, href: '/tang-le-cong-giao' },
+  { title: 'Áo Quan', desc: 'Cung cấp các loại quan tài an táng, hỏa táng và hũ tro cốt.', icon: <HomeOutlined className="text-5xl text-yellow-400" />, href: '/ao-quan' },
 ]
 
 const stats = [
@@ -41,40 +21,24 @@ const stats = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Banner - Đã xóa chữ để hiện ảnh đẹp */}
-      <section className="relative bg-zinc-900 text-white py-32 md:py-64 px-4 overflow-hidden flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
+      {/* Hero Banner - chỉ hiện ảnh */}
+      <section className="relative bg-zinc-900 overflow-hidden">
+        <div className="relative w-full" style={{ height: '600px' }}>
           <Image
-            src="/banner-hero.png" 
+            src="/banner-herro.png"
             alt="Dịch vụ tang lễ chuyên nghiệp"
             fill
             priority
             className="object-cover object-center"
           />
-          {/* Lớp phủ mờ nhẹ để giữ chiều sâu cho ảnh nhưng không che mất chi tiết */}
-          <div className="absolute inset-0 bg-black/30 bg-gradient-to-t from-zinc-900/80 via-transparent to-black/20"></div>
-        </div>
-
-        {/* Content - Chỉ giữ lại nút bấm để không che ảnh */}
-        <div className="relative z-10 w-full max-w-4xl mx-auto text-center mt-auto md:mt-32">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="tel:0868576777"
-              className="w-full sm:w-auto bg-yellow-400 text-black font-bold px-10 py-4 rounded-full hover:bg-yellow-300 transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-2xl">
-              <PhoneOutlined /> Gọi Ngay: 0868 57 67 77
-            </a>
-            <Link href="/gioi-thieu"
-              className="w-full sm:w-auto border-2 border-white text-white font-bold px-10 py-4 rounded-full hover:bg-white hover:text-black transition-all backdrop-blur-md shadow-2xl">
-              Tìm Hiểu Thêm
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-yellow-400 py-12 relative z-20 shadow-2xl">
+      {/* Stats */}
+      <section className="bg-yellow-400 py-12 shadow-2xl">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, i) => (
-            <div key={i} className="flex flex-col items-center gap-2 transition-transform hover:-translate-y-1">
+            <div key={i} className="flex flex-col items-center gap-2 hover:-translate-y-1 transition-transform">
               {stat.icon}
               <p className="text-3xl md:text-4xl font-black text-zinc-900">{stat.number}</p>
               <p className="text-zinc-800 font-semibold text-sm uppercase tracking-tighter">{stat.label}</p>
@@ -83,19 +47,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Dịch vụ */}
       <section className="py-24 px-4 bg-zinc-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4">
-              Dịch Vụ Của Chúng Tôi
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4">Dịch Vụ Của Chúng Tôi</h2>
             <div className="h-1 w-20 bg-yellow-400 mx-auto mb-4"></div>
             <p className="text-zinc-500 max-w-xl mx-auto">
               Cung cấp đầy đủ các dịch vụ tang lễ chuyên nghiệp, đáp ứng mọi nhu cầu và tín ngưỡng của gia đình.
             </p>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((s, i) => (
               <Link href={s.href} key={i}
@@ -103,10 +64,8 @@ export default function Home() {
                 <div className="mb-6 p-4 bg-zinc-50 rounded-2xl group-hover:bg-yellow-50 transition-colors">
                   {s.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-zinc-900 mb-4 group-hover:text-yellow-600 transition">
-                  {s.title}
-                </h3>
-                <p className="text-zinc-500 text-md leading-relaxed mb-6">{s.desc}</p>
+                <h3 className="text-2xl font-bold text-zinc-900 mb-4 group-hover:text-yellow-600 transition">{s.title}</h3>
+                <p className="text-zinc-500 leading-relaxed mb-6">{s.desc}</p>
                 <p className="mt-auto text-yellow-600 font-bold text-sm">XEM CHI TIẾT →</p>
               </Link>
             ))}
@@ -114,19 +73,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
+      {/* CTA */}
       <section className="bg-zinc-900 text-white py-20 px-4 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
             Cần Hỗ Trợ <span className="text-yellow-400">Ngay Bây Giờ?</span>
           </h2>
           <p className="text-zinc-400 text-lg mb-10">
-            Đội ngũ của chúng tôi luôn sẵn sàng 24/24 để lắng nghe và đồng hành cùng gia đình bạn trong mọi tình huống.
+            Đội ngũ của chúng tôi luôn sẵn sàng 24/24 để lắng nghe và đồng hành cùng gia đình bạn.
           </p>
           <a href="tel:0868576777"
-            className="bg-yellow-400 text-black font-bold px-12 py-5 rounded-full text-xl hover:bg-yellow-300 transition-all inline-flex items-center gap-3 shadow-2xl transform hover:scale-105">
+            className="bg-yellow-400 text-black font-bold px-12 py-5 rounded-full text-xl hover:bg-yellow-300 transition-all inline-flex items-center gap-3 shadow-2xl">
+            <PhoneOutlined /> 0868 57 67 77
           </a>
-          
         </div>
       </section>
     </div>
