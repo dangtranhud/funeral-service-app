@@ -7,16 +7,34 @@ export default function ContactForm() {
   const [form] = Form.useForm()
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (values: any) => {
+  const handleSubmit = async (values: any) => {
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+    try {
+      const res = await fetch('https://69fbee96fce564e2591710c7.mockapi.io/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: values.name,
+          phone: values.phone,
+          note: values.note || '',
+        }),
+      })
+
+      if (!res.ok) throw new Error('Lỗi server')
+
       form.resetFields()
       notification.success({
         message: 'Đăng ký thành công!',
         description: 'Chúng tôi sẽ liên hệ lại sớm nhất!',
       })
-    }, 1000)
+    } catch (error) {
+      notification.error({
+        message: 'Gửi thất bại!',
+        description: 'Có lỗi xảy ra, vui lòng thử lại sau.',
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

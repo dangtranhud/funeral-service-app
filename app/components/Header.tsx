@@ -22,7 +22,7 @@ export default function Header() {
       </div>
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold text-yellow-400 tracking-wide">
-          BLACKSTONES
+          FUNERAL
         </Link>
         <nav className="hidden md:flex gap-6 text-sm font-medium">
           {navLinks.map((link) => (
@@ -32,9 +32,9 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <a href="tel:0868576777"
+        <a href="tel:0356 23 78 58"
           className="hidden md:flex items-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-full font-bold hover:bg-yellow-300 transition">
-          <FiPhone /> 0868 57 67 77
+          <FiPhone /> 0356 23 78 58
         </a>
         <button className="md:hidden text-white text-2xl"
           onClick={() => setMenuOpen(!menuOpen)}>

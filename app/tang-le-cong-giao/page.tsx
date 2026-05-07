@@ -12,7 +12,6 @@ export default function TangLeCongGiao() {
 
   return (
     <div>
-      {/* Banner */}
       <section className="relative text-white text-center" style={{ height: '400px' }}>
         <div className="absolute inset-0">
           <img src="/tang-le-1.jpg" alt="Tang Lễ Công Giáo" className="w-full h-full object-cover" />
@@ -39,7 +38,6 @@ export default function TangLeCongGiao() {
               return (
                 <div key={service.id}
                   className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition border border-zinc-100 flex flex-col">
-                  {/* Ảnh */}
                   <div className="h-48 overflow-hidden">
                     <img
                       src={extra?.img}
@@ -47,7 +45,6 @@ export default function TangLeCongGiao() {
                       className="w-full h-full object-cover hover:scale-105 transition duration-300"
                     />
                   </div>
-                  {/* Nội dung */}
                   <div className="p-6 flex flex-col flex-1">
                     <h3 className="text-xl font-bold text-zinc-900 mb-2">{service.title}</h3>
                     <p className="text-yellow-500 font-bold text-lg mb-4">
@@ -62,7 +59,7 @@ export default function TangLeCongGiao() {
                       ))}
                     </ul>
                     <div className="flex gap-3 mt-auto">
-                      <a href="tel:0868576777"
+                      <a href="tel:0356 23 78 58"
                         className="flex-1 border-2 border-yellow-400 text-yellow-500 font-bold py-2 rounded-full text-center text-sm hover:bg-yellow-400 hover:text-black transition flex items-center justify-center gap-1">
                         <PhoneOutlined /> Gọi ngay
                       </a>
@@ -83,10 +80,10 @@ export default function TangLeCongGiao() {
         <h2 className="text-3xl font-extrabold mb-4">
           Cần Tư Vấn? <span className="text-yellow-400">Gọi Ngay!</span>
         </h2>
-        <p className="text-zinc-400 mb-8">Đội ngũ chúng tôi luôn sẵn sàng hỗ trợ 24/7</p>
+        <p className="text-zinc-400 mb-8">Đội ngũ chúng tôi luôn sẵn sàng hỗ trợ 24/24</p>
         <a href="tel:0868576777"
           className="bg-yellow-400 text-black font-bold px-10 py-4 rounded-full text-lg hover:bg-yellow-300 transition inline-flex items-center gap-2">
-          <PhoneOutlined /> 0868 57 67 77
+          <PhoneOutlined />0356 23 78 58
         </a>
       </section>
     </div>

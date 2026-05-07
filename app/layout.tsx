@@ -4,8 +4,8 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Blackstones - Dịch Vụ Tang Lễ Trọn Gói',
-  description: 'Dịch vụ tang lễ trọn gói chuyên nghiệp tại TP.HCM',
+  title: 'Funera- Dịch Vụ Tang Lễ',
+  description: 'Dịch vụ tang lễ trọn gói chuyên nghiệp tại TP.Đồng Nai',
 }
 
 export default function RootLayout({

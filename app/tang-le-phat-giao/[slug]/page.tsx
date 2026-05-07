@@ -40,7 +40,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
           </Link>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Nội dung bên trái */}
             <div className="md:col-span-2 space-y-6">
               <div className="bg-white rounded-2xl shadow-md p-8 border border-zinc-100">
                 <h2 className="text-2xl font-extrabold text-zinc-900 mb-4">{service.title}</h2>
@@ -61,7 +60,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                 </div>
               </div>
 
-              {/* Ảnh thực tế */}
               <div className="bg-white rounded-2xl shadow-md p-8 border border-zinc-100">
                 <h3 className="text-lg font-bold text-zinc-900 mb-4">📸 Hình Ảnh Thực Tế</h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -72,7 +70,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                 </div>
               </div>
 
-              {/* Cam kết */}
               <div className="bg-zinc-900 rounded-2xl p-6 text-white">
                 <h3 className="font-bold text-yellow-400 mb-4 text-lg">🤝 Cam Kết Của Chúng Tôi</h3>
                 <ul className="space-y-2 text-zinc-300 text-sm">
@@ -84,7 +81,6 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               </div>
             </div>
 
-            {/* Form bên phải */}
             <div className="md:col-span-1">
               <div className="bg-white rounded-2xl shadow-md p-6 border border-zinc-100 sticky top-24">
                 <h3 className="text-lg font-bold text-zinc-900 mb-4 text-center">
@@ -95,7 +91,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                   <p className="text-zinc-500 text-xs mb-2">Hoặc gọi trực tiếp</p>
                   <a href="tel:0868576777"
                     className="bg-yellow-400 text-black font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition inline-flex items-center gap-2 w-full justify-center">
-                    <PhoneOutlined /> 0868 57 67 77
+                    <PhoneOutlined /> 0356 23 78 58
                   </a>
                 </div>
               </div>

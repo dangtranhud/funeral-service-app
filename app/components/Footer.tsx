@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <Link href="/" className="flex flex-col leading-none mb-4">
             <span className="text-2xl font-extrabold text-white tracking-widest">
-              BLACK<span className="text-yellow-400">STONES</span>
+            FUN<span className="text-yellow-400">ERA</span>
             </span>
             <span className="text-xs text-zinc-500 tracking-wider">Dịch Vụ Tang Lễ Trọn Gói</span>
           </Link>
@@ -55,8 +55,8 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-zinc-500 text-xs">Hotline 24/7</p>
-                <a href="tel:0868576777" className="text-white font-bold hover:text-yellow-400">
-                  0868 57 67 77
+                <a href="tel:0356237858" className="text-white font-bold hover:text-yellow-400">
+                 0356237858
                 </a>
               </div>
             </li>
@@ -66,7 +66,7 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-zinc-500 text-xs">Email</p>
-                <span className="text-white">da@blackstones.vn</span>
+                <span className="text-white">dangphuc@Funera.vn</span>
               </div>
             </li>
             <li className="flex items-start gap-3">
@@ -75,14 +75,14 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-zinc-500 text-xs">Địa chỉ</p>
-                <span className="text-white">TP. Hồ Chí Minh, Việt Nam</span>
+                <span className="text-white">TP.Đồng Nai, Việt Nam</span>
               </div>
-            </li>
+            </li> 
           </ul>
         </div>
       </div>
       <div className="border-t border-zinc-800 py-4 text-center text-xs text-zinc-600">
-        © 2024 <span className="text-yellow-400 font-semibold">Blackstones</span>. All rights reserved.
+        © 2026 <span className="text-yellow-400 font-semibold">Funera</span>.Hi
       </div>
     </footer>
   )

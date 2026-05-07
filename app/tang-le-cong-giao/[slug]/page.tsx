@@ -55,8 +55,6 @@ const images = slug === 'cong-giao-tron-goi'
                   ))}
                 </div>
               </div>
-
-              {/* Ảnh thực tế */}
               <div className="bg-white rounded-2xl shadow-md p-8 border border-zinc-100">
                 <h3 className="text-lg font-bold text-zinc-900 mb-4">📸 Hình Ảnh Thực Tế</h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -66,8 +64,6 @@ const images = slug === 'cong-giao-tron-goi'
                   ))}
                 </div>
               </div>
-
-              {/* Cam kết */}
               <div className="bg-zinc-900 rounded-2xl p-6 text-white">
                 <h3 className="font-bold text-yellow-400 mb-4 text-lg">🤝 Cam Kết Của Chúng Tôi</h3>
                 <ul className="space-y-2 text-zinc-300 text-sm">

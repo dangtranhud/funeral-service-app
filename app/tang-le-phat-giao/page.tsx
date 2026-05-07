@@ -3,9 +3,9 @@ import { PhoneOutlined, ArrowRightOutlined, CheckCircleOutlined } from '@ant-des
 import { services } from '../data/services'
 
 const extras = [
-  { slug: 'tang-le-tiet-kiem', features: ['Xe tang chuyên dụng', 'Hòm gỗ tiêu chuẩn', 'Hoa tươi trang trí', 'Đội nhạc lễ'] },
-  { slug: 'tang-le-tron-goi', features: ['Xe tang cao cấp', 'Hòm gỗ cao cấp', 'Hoa tươi phong phú', 'Nhân viên 24/7'] },
-  { slug: 'tang-le-thiet-ke-rieng', features: ['Tư vấn riêng 1-1', 'Thiết kế theo yêu cầu', 'Không giới hạn dịch vụ', 'Hỗ trợ 24/7'] },
+  { slug: 'tang-le-tiet-kiem',      image: '/pl-tiet-kiem1.jpg',      features: ['Xe tang chuyên dụng', 'Hòm gỗ tiêu chuẩn', 'Hoa tươi trang trí', 'Đội nhạc lễ'] },
+  { slug: 'tang-le-tron-goi',       image: '/pl-tron-goi1.jpg',       features: ['Xe tang cao cấp', 'Hòm gỗ cao cấp', 'Hoa tươi phong phú', 'Nhân viên 24/7'] },
+  { slug: 'tang-le-thiet-ke-rieng', image: '/pl-thiet-ke-rieng1.jpg', features: ['Tư vấn riêng 1-1', 'Thiết kế theo yêu cầu', 'Không giới hạn dịch vụ', 'Hỗ trợ 24/7'] },
 ]
 
 export default function TangLePhatGiao() {
@@ -13,7 +13,6 @@ export default function TangLePhatGiao() {
 
   return (
     <div>
-      {/* Banner có ảnh */}
       <section className="relative text-white text-center" style={{ height: '400px' }}>
         <div className="absolute inset-0">
           <img src="/tang-le-2.jpg" alt="Tang Lễ Phật Giáo" className="w-full h-full object-cover" />
@@ -39,31 +38,40 @@ export default function TangLePhatGiao() {
               const extra = extras.find(g => g.slug === service.slug)
               return (
                 <div key={service.id}
-                  className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition border border-zinc-100 flex flex-col">
-                  <div className="bg-yellow-50 rounded-xl p-4 mb-4 text-center">
-                    <span className="text-yellow-400 text-4xl">🙏</span>
+                  className="bg-white rounded-2xl shadow-md hover:shadow-xl transition border border-zinc-100 flex flex-col overflow-hidden">
+
+                  {/* ẢNH THAY CHO ICON 🙏 */}
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={extra?.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <h3 className="text-xl font-bold text-zinc-900 mb-2">{service.title}</h3>
-                  <p className="text-yellow-500 font-bold text-lg mb-4">
-                    {service.price !== 'Liên hệ' ? `Từ ${service.price} VNĐ` : 'Liên hệ để biết giá'}
-                  </p>
-                  <ul className="space-y-2 mb-6 flex-1">
-                    {extra?.features.map((f, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-zinc-600">
-                        <CheckCircleOutlined className="text-yellow-400" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="flex gap-3 mt-auto">
-                    <a href="tel:0868576777"
-                      className="flex-1 border-2 border-yellow-400 text-yellow-500 font-bold py-2 rounded-full text-center text-sm hover:bg-yellow-400 hover:text-black transition flex items-center justify-center gap-1">
-                      <PhoneOutlined /> Gọi ngay
-                    </a>
-                    <Link href={`/tang-le-phat-giao/${service.slug}`}
-                      className="flex-1 bg-yellow-400 text-black font-bold py-2 rounded-full text-center text-sm hover:bg-yellow-300 transition flex items-center justify-center gap-1">
-                      Chi tiết <ArrowRightOutlined />
-                    </Link>
+
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-xl font-bold text-zinc-900 mb-2">{service.title}</h3>
+                    <p className="text-yellow-500 font-bold text-lg mb-4">
+                      {service.price !== 'Liên hệ' ? `Từ ${service.price} VNĐ` : 'Liên hệ để biết giá'}
+                    </p>
+                    <ul className="space-y-2 mb-6 flex-1">
+                      {extra?.features.map((f, i) => (
+                        <li key={i} className="flex items-center gap-2 text-sm text-zinc-600">
+                          <CheckCircleOutlined className="text-yellow-400" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex gap-3 mt-auto">
+                      <a href="tel:0356237858"
+                        className="flex-1 border-2 border-yellow-400 text-yellow-500 font-bold py-2 rounded-full text-center text-sm hover:bg-yellow-400 hover:text-black transition flex items-center justify-center gap-1">
+                        <PhoneOutlined /> Gọi ngay
+                      </a>
+                      <Link href={`/tang-le-phat-giao/${service.slug}`}
+                        className="flex-1 bg-yellow-400 text-black font-bold py-2 rounded-full text-center text-sm hover:bg-yellow-300 transition flex items-center justify-center gap-1">
+                        Chi tiết <ArrowRightOutlined />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )
@@ -77,9 +85,9 @@ export default function TangLePhatGiao() {
           Cần Tư Vấn? <span className="text-yellow-400">Gọi Ngay!</span>
         </h2>
         <p className="text-zinc-400 mb-8">Đội ngũ chúng tôi luôn sẵn sàng hỗ trợ 24/7</p>
-        <a href="tel:0868576777"
+        <a href="tel:0356237858"
           className="bg-yellow-400 text-black font-bold px-10 py-4 rounded-full text-lg hover:bg-yellow-300 transition inline-flex items-center gap-2">
-          <PhoneOutlined /> 0868 57 67 77
+          <PhoneOutlined /> 0356 23 78 58
         </a>
       </section>
     </div>

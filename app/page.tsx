@@ -21,11 +21,10 @@ const stats = [
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Banner - chỉ hiện ảnh */}
       <section className="relative bg-zinc-900 overflow-hidden">
         <div className="relative w-full" style={{ height: '600px' }}>
           <Image
-            src="/banner-herro.png"
+            src="/banner-herro 1.png"
             alt="Dịch vụ tang lễ chuyên nghiệp"
             fill
             priority
@@ -46,8 +45,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-      {/* Dịch vụ */}
       <section className="py-24 px-4 bg-zinc-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
